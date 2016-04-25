@@ -10,6 +10,10 @@ class WatchInBindingsParentController {
 	constructor() {
 		this.string = 'Another string';
 	}
+	
+	handleChanges(value: number): void {
+		this.twoWayValue = value;
+	}
 }
 
 function watchInBindingsParent(): angular.IDirective {
@@ -28,6 +32,16 @@ class WatchInBindingsChildController {
 	string: string;
 	interpolatedString: string;
 	twoWay: number;
+	twoWayChange: {(params: { value: number }): void};
+	
+	get twoWayWrapper(): number {
+		return this.twoWay;
+	}
+	
+	set twoWayWrapper(value: number) {
+		this.twoWay = value;
+		this.twoWayChange({ value: value });
+	}
 	
 	static $inject: string[] = ['$scope'];
 	constructor($scope: angular.IScope) {
@@ -48,7 +62,8 @@ function watchInBindingsChild(): angular.IDirective {
 			binding: '<',
 			string: '<',
 			interpolatedString: '<',
-			twoWay: '=',
+			twoWay: '<',
+			twoWayChange: '&',
 		},
 	};
 }

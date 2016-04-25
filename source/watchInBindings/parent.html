@@ -6,4 +6,4 @@
 	<input type="number" name="watchedValue" ng-model="controller.watchedValue" />
 </div>
 <ts-watch-in-bindings-child binding="controller.watchedValue"
-							string="'A string'" interpolated-string="controller.string" two-way="controller.twoWayValue"></ts-watch-in-bindings-child>
+							string="'A string'" interpolated-string="controller.string" two-way="controller.twoWayValue" two-way-change="controller.handleChanges(value)"></ts-watch-in-bindings-child>
