@@ -3,14 +3,16 @@ import * as angular from 'angular';
 export const moduleName: string = 'watchInTemplate';
 
 class WatchInTemplateController {
-	watchedValue: number;
+	private _watchedValue: number;
 	doubledValue: number;
 	
-	static $inject: string[] = ['$scope'];
-	constructor($scope: angular.IScope) {
-		$scope.$watch('controller.watchedValue', (value: number): void => {
-			this.doubledValue = this.watchedValue * 2;
-		});
+	get watchedValue(): number {
+		return this._watchedValue;
+	}
+	
+	set watchedValue(value: number) {
+		this._watchedValue = value;
+		this.doubledValue = this._watchedValue * 2;
 	}
 }
 
