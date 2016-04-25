@@ -2,6 +2,15 @@ import * as angular from 'angular';
 
 export const moduleName: string = 'watchInBindings';
 
+interface IChangeObject<T> {
+	currentValue: T;
+	previousValue: T;
+}
+
+interface IBindingChanges {
+	binding: IChangeObject<number>;
+}
+
 class WatchInBindingsParentController {
 	watchedValue: number;
 }
@@ -20,7 +29,7 @@ class WatchInBindingsChildController {
 	binding: number;
 	doubledValue: number;
 	
-	$onChanges(changes: any): void {
+	$onChanges(changes: IBindingChanges): void {
 		if (changes.binding) {
 			this.doubledValue = changes.binding.currentValue * 2;
 		}
