@@ -1,9 +1,24 @@
 import * as angular from 'angular';
+import * as Rx from 'rx';
 
 export const moduleName: string = 'watchInService';
 
 class WatchedService {
-	watchedValue: number;
+	private _watchedValue: number;
+	watchedValueObservable: Rx.Subject<number>;
+	
+	get watchedValue(): number {
+		return this._watchedValue;
+	}
+	
+	set watchedValue(value: number) {
+		this._watchedValue = value;
+		this.watchedValueObservable.onNext(value);
+	}
+	
+	constructor() {
+		this.watchedValueObservable = new Rx.Subject();
+	}
 }
 
 class ServiceProviderController {
@@ -24,9 +39,9 @@ function serviceProvider(): angular.IDirective {
 class WatchInServiceController {
 	doubledValue: number;
 	
-	static $inject: string[] = ['$scope', 'watchedService'];
-	constructor($scope: angular.IScope, public watchedService: WatchedService) {
-		$scope.$watch('controller.watchedService.watchedValue', (value: number): void => {
+	static $inject: string[] = ['watchedService'];
+	constructor(public watchedService: WatchedService) {
+		watchedService.watchedValueObservable.subscribe((value: number): void => {
 			this.doubledValue = value * 2;
 		});
 	}
