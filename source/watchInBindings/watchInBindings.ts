@@ -20,11 +20,10 @@ class WatchInBindingsChildController {
 	binding: number;
 	doubledValue: number;
 	
-	static $inject: string[] = ['$scope'];
-	constructor($scope: angular.IScope) {
-		$scope.$watch('controller.binding', (value: number): void => {
-			this.doubledValue = value * 2;
-		});
+	$onChanges(changes: any): void {
+		if (changes.binding) {
+			this.doubledValue = changes.binding.currentValue * 2;
+		}
 	}
 }
 
