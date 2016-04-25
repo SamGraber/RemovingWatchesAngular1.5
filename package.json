@@ -1,0 +1,33 @@
+{
+  "name": "remove-watches-angular-1.5",
+  "version": "0.0.0",
+  "description": "Removing watches in angular 1.5",
+  "author": "Sam Graber (sgraber@renovo1.com)",
+  "keywords": [
+    "typescript",
+    "blogging",
+    "angular"
+  ],
+  "main": "",
+  "scripts": {
+    "build": "tsc",
+    "build.watch": "tsc -w",
+    "bundle": "webpack",
+    "bundle.watch": "webpack -w",
+    "build-bundle": "npm run build && npm run bundle",
+    "serve": "http-server",
+    "start": "concurrently --kill-others \"npm run build.watch\" \"npm run bundle.watch\" \"http-server -c-1 -o\""
+  },
+  "devDependencies": {
+    "concurrently": "~2.0.0",
+    "http-server": "^0.9.0",
+    "raw-loader": "^0.5.1",
+    "typescript": "~1.8.2",
+    "webpack": "~1.12.14"
+  },
+  "dependencies": {
+    "angular": "~1.5.3",
+    "rx": "~4.0.8"
+  },
+  "license": "GPL-3.0"
+}

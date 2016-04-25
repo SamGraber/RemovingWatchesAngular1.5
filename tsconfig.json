@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"declaration": true,
+		"inlineSourceMap": true,
+		"target": "ES5"
+	},
+	"exclude": [
+		"node_modules",
+		"output",
+		"typings/main",
+		"typings/main.d.ts"
+	]
+}
