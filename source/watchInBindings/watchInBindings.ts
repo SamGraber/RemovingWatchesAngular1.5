@@ -4,6 +4,12 @@ export const moduleName: string = 'watchInBindings';
 
 class WatchInBindingsParentController {
 	watchedValue: number;
+	twoWayValue: number;
+	string: string;
+	
+	constructor() {
+		this.string = 'Another string';
+	}
 }
 
 function watchInBindingsParent(): angular.IDirective {
@@ -19,6 +25,9 @@ function watchInBindingsParent(): angular.IDirective {
 class WatchInBindingsChildController {
 	binding: number;
 	doubledValue: number;
+	string: string;
+	interpolatedString: string;
+	twoWay: number;
 	
 	static $inject: string[] = ['$scope'];
 	constructor($scope: angular.IScope) {
@@ -36,7 +45,10 @@ function watchInBindingsChild(): angular.IDirective {
 		controllerAs: 'controller',
 		scope: {},
 		bindToController: {
-			binding: '<',	
+			binding: '<',
+			string: '@',
+			interpolatedString: '@',
+			twoWay: '=',
 		},
 	};
 }
