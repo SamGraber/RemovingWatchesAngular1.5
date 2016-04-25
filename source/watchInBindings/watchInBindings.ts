@@ -15,15 +15,11 @@ class WatchInBindingsParentController {
 	watchedValue: number;
 }
 
-function watchInBindingsParent(): angular.IDirective {
-	return {
-		restrict: 'E',
-		template: require('./parent.html'),
-		controller: 'WatchInBindingsParentController',
-		controllerAs: 'controller',
-		scope: {},
-	};
-}
+const watchInBindingsParent: angular.IComponentOptions {
+	template: require('./parent.html'),
+	controller: 'WatchInBindingsParentController',
+	controllerAs: 'controller',
+};
 
 class WatchInBindingsChildController {
 	binding: number;
@@ -36,21 +32,17 @@ class WatchInBindingsChildController {
 	}
 }
 
-function watchInBindingsChild(): angular.IDirective {
-	return {
-		restrict: 'E',
-		template: require('./child.html'),
-		controller: 'WatchInBindingsChildController',
-		controllerAs: 'controller',
-		scope: {},
-		bindToController: {
-			binding: '<',	
-		},
-	};
-}
+const watchInBindingsChild: angular.IComponentOptions = {
+	template: require('./child.html'),
+	controller: 'WatchInBindingsChildController',
+	controllerAs: 'controller',
+	bindings: {
+		binding: '<',	
+	},
+};
 
 angular.module(moduleName, [])
 	.controller('WatchInBindingsParentController', WatchInBindingsParentController)
-	.directive('tsWatchInBindings', watchInBindingsParent)
+	.component('tsWatchInBindings', watchInBindingsParent)
 	.controller('WatchInBindingsChildController', WatchInBindingsChildController)
-	.directive('tsWatchInBindingsChild', watchInBindingsChild);
+	.component('tsWatchInBindingsChild', watchInBindingsChild);

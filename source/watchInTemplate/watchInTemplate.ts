@@ -16,16 +16,12 @@ class WatchInTemplateController {
 	}
 }
 
-function watchInTemplate(): angular.IDirective {
-	return {
-		restrict: 'E',
-		template: require('./watchInTemplate.html'),
-		controller: 'WatchInTemplateController',
-		controllerAs: 'controller',
-		scope: {},
-	};
-}
+const watchInTemplate: angular.IComponentOptions = {
+	template: require('./watchInTemplate.html'),
+	controller: 'WatchInTemplateController',
+	controllerAs: 'controller',
+};
 
 angular.module(moduleName, [])
 	.controller('WatchInTemplateController', WatchInTemplateController)
-	.directive('tsWatchInTemplate', watchInTemplate);
+	.component('tsWatchInTemplate', watchInTemplate);

@@ -26,15 +26,11 @@ class ServiceProviderController {
 	constructor(public watchedService: WatchedService) {}
 }
 
-function serviceProvider(): angular.IDirective {
-	return {
-		restrict: 'E',
-		template: require('./serviceProvider.html'),
-		controller: 'ServiceProviderController',
-		controllerAs: 'controller',
-		scope: {},
-	};
-}
+const serviceProvider: angular.IComponentOptions = {
+	template: require('./serviceProvider.html'),
+	controller: 'ServiceProviderController',
+	controllerAs: 'controller',
+};
 
 class WatchInServiceController {
 	doubledValue: number;
@@ -47,19 +43,15 @@ class WatchInServiceController {
 	}
 }
 
-function watchInService(): angular.IDirective {
-	return {
-		restrict: 'E',
-		template: require('./watchInService.html'),
-		controller: 'WatchInServiceController',
-		controllerAs: 'controller',
-		scope: {},
-	};
-}
+const watchInService: angular.IComponentOptions = {
+	template: require('./watchInService.html'),
+	controller: 'WatchInServiceController',
+	controllerAs: 'controller',
+};
 
 angular.module(moduleName, [])
 	.controller('WatchInServiceController', WatchInServiceController)
-	.directive('tsWatchInService', watchInService)
+	.component('tsWatchInService', watchInService)
 	.service('watchedService', WatchedService)
 	.controller('ServiceProviderController', ServiceProviderController)
-	.directive('tsServiceProvider', serviceProvider);
+	.component('tsServiceProvider', serviceProvider);
