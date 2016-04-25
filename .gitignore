@@ -2,4 +2,7 @@
 /node_modules/
 
 /* Typings */
-/typings/
+/typings/main/
+/typings/main.d.ts
+/typings/browser/
+/typings/browser.d.ts
