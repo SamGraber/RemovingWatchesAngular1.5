@@ -6,15 +6,11 @@ var WatchInBindingsParentController = (function () {
     }
     return WatchInBindingsParentController;
 }());
-function watchInBindingsParent() {
-    return {
-        restrict: 'E',
-        template: require('./parent.html'),
-        controller: 'WatchInBindingsParentController',
-        controllerAs: 'controller',
-        scope: {},
-    };
-}
+var watchInBindingsParent = {
+    template: require('./parent.html'),
+    controller: 'WatchInBindingsParentController',
+    controllerAs: 'controller',
+};
 var WatchInBindingsChildController = (function () {
     function WatchInBindingsChildController() {
     }
@@ -25,21 +21,17 @@ var WatchInBindingsChildController = (function () {
     };
     return WatchInBindingsChildController;
 }());
-function watchInBindingsChild() {
-    return {
-        restrict: 'E',
-        template: require('./child.html'),
-        controller: 'WatchInBindingsChildController',
-        controllerAs: 'controller',
-        scope: {},
-        bindToController: {
-            binding: '<',
-        },
-    };
-}
+var watchInBindingsChild = {
+    template: require('./child.html'),
+    controller: 'WatchInBindingsChildController',
+    controllerAs: 'controller',
+    bindings: {
+        binding: '<',
+    },
+};
 angular.module(exports.moduleName, [])
     .controller('WatchInBindingsParentController', WatchInBindingsParentController)
-    .directive('tsWatchInBindings', watchInBindingsParent)
+    .component('tsWatchInBindings', watchInBindingsParent)
     .controller('WatchInBindingsChildController', WatchInBindingsChildController)
-    .directive('tsWatchInBindingsChild', watchInBindingsChild);
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoid2F0Y2hJbkJpbmRpbmdzLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsid2F0Y2hJbkJpbmRpbmdzLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQSxJQUFZLE9BQU8sV0FBTSxTQUFTLENBQUMsQ0FBQTtBQUV0QixrQkFBVSxHQUFXLGlCQUFpQixDQUFDO0FBRXBEO0lBQUE7SUFFQSxDQUFDO0lBQUQsc0NBQUM7QUFBRCxDQUFDLEFBRkQsSUFFQztBQUVEO0lBQ0MsTUFBTSxDQUFDO1FBQ04sUUFBUSxFQUFFLEdBQUc7UUFDYixRQUFRLEVBQUUsT0FBTyxDQUFDLGVBQWUsQ0FBQztRQUNsQyxVQUFVLEVBQUUsaUNBQWlDO1FBQzdDLFlBQVksRUFBRSxZQUFZO1FBQzFCLEtBQUssRUFBRSxFQUFFO0tBQ1QsQ0FBQztBQUNILENBQUM7QUFFRDtJQUFBO0lBU0EsQ0FBQztJQUxBLG1EQUFVLEdBQVYsVUFBVyxPQUFZO1FBQ3RCLEVBQUUsQ0FBQyxDQUFDLE9BQU8sQ0FBQyxPQUFPLENBQUMsQ0FBQyxDQUFDO1lBQ3JCLElBQUksQ0FBQyxZQUFZLEdBQUcsT0FBTyxDQUFDLE9BQU8sQ0FBQyxZQUFZLEdBQUcsQ0FBQyxDQUFDO1FBQ3RELENBQUM7SUFDRixDQUFDO0lBQ0YscUNBQUM7QUFBRCxDQUFDLEFBVEQsSUFTQztBQUVEO0lBQ0MsTUFBTSxDQUFDO1FBQ04sUUFBUSxFQUFFLEdBQUc7UUFDYixRQUFRLEVBQUUsT0FBTyxDQUFDLGNBQWMsQ0FBQztRQUNqQyxVQUFVLEVBQUUsZ0NBQWdDO1FBQzVDLFlBQVksRUFBRSxZQUFZO1FBQzFCLEtBQUssRUFBRSxFQUFFO1FBQ1QsZ0JBQWdCLEVBQUU7WUFDakIsT0FBTyxFQUFFLEdBQUc7U0FDWjtLQUNELENBQUM7QUFDSCxDQUFDO0FBRUQsT0FBTyxDQUFDLE1BQU0sQ0FBQyxrQkFBVSxFQUFFLEVBQUUsQ0FBQztLQUM1QixVQUFVLENBQUMsaUNBQWlDLEVBQUUsK0JBQStCLENBQUM7S0FDOUUsU0FBUyxDQUFDLG1CQUFtQixFQUFFLHFCQUFxQixDQUFDO0tBQ3JELFVBQVUsQ0FBQyxnQ0FBZ0MsRUFBRSw4QkFBOEIsQ0FBQztLQUM1RSxTQUFTLENBQUMsd0JBQXdCLEVBQUUsb0JBQW9CLENBQUMsQ0FBQyJ9
+    .component('tsWatchInBindingsChild', watchInBindingsChild);
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoid2F0Y2hJbkJpbmRpbmdzLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsid2F0Y2hJbkJpbmRpbmdzLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQSxJQUFZLE9BQU8sV0FBTSxTQUFTLENBQUMsQ0FBQTtBQUV0QixrQkFBVSxHQUFXLGlCQUFpQixDQUFDO0FBV3BEO0lBQUE7SUFFQSxDQUFDO0lBQUQsc0NBQUM7QUFBRCxDQUFDLEFBRkQsSUFFQztBQUVELElBQU0scUJBQXFCLEdBQTRCO0lBQ3RELFFBQVEsRUFBRSxPQUFPLENBQUMsZUFBZSxDQUFDO0lBQ2xDLFVBQVUsRUFBRSxpQ0FBaUM7SUFDN0MsWUFBWSxFQUFFLFlBQVk7Q0FDMUIsQ0FBQztBQUVGO0lBQUE7SUFTQSxDQUFDO0lBTEEsbURBQVUsR0FBVixVQUFXLE9BQXdCO1FBQ2xDLEVBQUUsQ0FBQyxDQUFDLE9BQU8sQ0FBQyxPQUFPLENBQUMsQ0FBQyxDQUFDO1lBQ3JCLElBQUksQ0FBQyxZQUFZLEdBQUcsT0FBTyxDQUFDLE9BQU8sQ0FBQyxZQUFZLEdBQUcsQ0FBQyxDQUFDO1FBQ3RELENBQUM7SUFDRixDQUFDO0lBQ0YscUNBQUM7QUFBRCxDQUFDLEFBVEQsSUFTQztBQUVELElBQU0sb0JBQW9CLEdBQThCO0lBQ3ZELFFBQVEsRUFBRSxPQUFPLENBQUMsY0FBYyxDQUFDO0lBQ2pDLFVBQVUsRUFBRSxnQ0FBZ0M7SUFDNUMsWUFBWSxFQUFFLFlBQVk7SUFDMUIsUUFBUSxFQUFFO1FBQ1QsT0FBTyxFQUFFLEdBQUc7S0FDWjtDQUNELENBQUM7QUFFRixPQUFPLENBQUMsTUFBTSxDQUFDLGtCQUFVLEVBQUUsRUFBRSxDQUFDO0tBQzVCLFVBQVUsQ0FBQyxpQ0FBaUMsRUFBRSwrQkFBK0IsQ0FBQztLQUM5RSxTQUFTLENBQUMsbUJBQW1CLEVBQUUscUJBQXFCLENBQUM7S0FDckQsVUFBVSxDQUFDLGdDQUFnQyxFQUFFLDhCQUE4QixDQUFDO0tBQzVFLFNBQVMsQ0FBQyx3QkFBd0IsRUFBRSxvQkFBb0IsQ0FBQyxDQUFDIn0=
