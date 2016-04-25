@@ -46,8 +46,8 @@ function watchInBindingsChild(): angular.IDirective {
 		scope: {},
 		bindToController: {
 			binding: '<',
-			string: '@',
-			interpolatedString: '@',
+			string: '<',
+			interpolatedString: '<',
 			twoWay: '=',
 		},
 	};
