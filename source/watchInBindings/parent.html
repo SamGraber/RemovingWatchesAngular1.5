@@ -1,7 +1,9 @@
 <h2>Watch In Bindings</h2>
 <h4>Parent</h4>
+<div>Two way: {{controller.twoWayValue}}</div>
 <div>
 	<label for="watchedValue">Watched value:</label>
 	<input type="number" name="watchedValue" ng-model="controller.watchedValue" />
 </div>
-<ts-watch-in-bindings-child binding="controller.watchedValue"></ts-watch-in-bindings-child>
+<ts-watch-in-bindings-child binding="controller.watchedValue"
+							string="A string" interpolated-string="controller.string" two-way="controller.twoWayValue"></ts-watch-in-bindings-child>
